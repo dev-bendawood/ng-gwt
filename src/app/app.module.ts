@@ -1,15 +1,16 @@
-import { AuthGuard } from './guards/auth-guard.service';
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { JwtModule } from "@auth0/angular-jwt";
+import { JwtModule } from '@auth0/angular-jwt';
 
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { CustomersComponent } from './customers/customers.component';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthGuard } from './guards/auth-guard.service';
+import { LoginComponent } from './login/login.component';
+import { EventsComponent } from './events/events.component';
+import { HomeComponent } from './home/home.component';
 
 export function tokenGetter() {
   return localStorage.getItem("jwt");
@@ -17,10 +18,10 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
-    HomeComponent,
-    LoginComponent,
-    CustomersComponent,
     AppComponent,
+    LoginComponent,
+    EventsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +30,7 @@ export function tokenGetter() {
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard] },
+      { path: 'events', component: EventsComponent, canActivate: [AuthGuard] },
     ]),
     JwtModule.forRoot({
       config: {

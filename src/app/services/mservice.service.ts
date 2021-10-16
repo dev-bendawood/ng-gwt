@@ -1,14 +1,3 @@
-/*import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class MserviceService {
-
-  constructor() { }
-}
-*/
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -16,7 +5,8 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class mService {
+export class mservice {
+
   //private baseUrl = 'http://localhost2/AAS';
   //private baseUrl = 'http://10.0.0.101/AAS';
   private baseUrl = 'http://aas.bendawood.com';

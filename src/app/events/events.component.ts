@@ -1,19 +1,18 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { mService } from '../services/mservice.service';
+import { mservice } from '../services/mservice.service';
 
 @Component({
-  selector: 'app-customers',
-  templateUrl: './customers.component.html',
-  styles: [``]
+  selector: 'app-events',
+  templateUrl: './events.component.html',
+  styleUrls: ['./events.component.css']
 })
-export class CustomersComponent implements OnInit  {
+export class EventsComponent implements OnInit {
   customers: any;
- 
-  constructor(private mService: mService) { }
+  constructor(private mservice: mservice) { }
 
   getCustomers() {
-    this.mService.getCustomers().subscribe(
+    this.mservice.getCustomers().subscribe(
       (event: any) => {
         if (event instanceof HttpResponse) {
           this.customers=event.body.items;
@@ -26,8 +25,9 @@ export class CustomersComponent implements OnInit  {
       });
       
   }
- 
-  ngOnInit() {
+
+  ngOnInit(): void {
     this.getCustomers();
   }
+
 }

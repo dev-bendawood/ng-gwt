@@ -1,16 +1,19 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'login',
-  templateUrl: './login.component.html'
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  invalidLogin: boolean;
-
+export class LoginComponent implements OnInit {
+  invalidLogin?:boolean;
   constructor(private router: Router, private http: HttpClient) { }
+
+  ngOnInit(): void {
+  }
 
   login(form: NgForm) {
     const credentials = JSON.stringify(form.value);
@@ -27,4 +30,5 @@ export class LoginComponent {
       this.invalidLogin = true;
     });
   }
+
 }
